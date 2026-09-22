@@ -39,14 +39,14 @@ class ReportingConfig(StrictModel):
     progress_interval_frames: int = Field(gt=0)
     timeout_seconds: int = Field(gt=0)
     max_retries: int = Field(ge=0)
-    retry_backoff_factor: float = Field(default=0.25, ge=0, le=10)
+    retry_backoff_seconds: float = Field(default=0.25, ge=0, le=10)
 
 
 class AppConfig(StrictModel):
     """ Configuration for the application. """
 
     video_path: str = Field(min_length=1)
-    generate_synthetic_inputs: bool = Field(default=False)
+    generate_synthetic_input: bool = Field(default=False)
     target_fps: float = Field(gt=0)
     confidence_threshold: float = Field(ge=0, le=1)
     field_detector: FieldDetectorConfig
